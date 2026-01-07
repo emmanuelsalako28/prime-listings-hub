@@ -57,8 +57,9 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold shrink-0" />
-                <a href="mailto:info@goonlineestates.com" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
-                  info@goonlineestates.com
+                <a href="mailto:goonlinemedia0@gmail.com
+" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
+                  goonlinemedia0@gmail.com
                 </a>
               </li>
             </ul>
