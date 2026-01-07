@@ -24,10 +24,10 @@ export function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
-              <span className="font-display text-xl font-bold text-primary-foreground">N</span>
+              <span className="font-display text-xl font-bold text-primary-foreground">G</span>
             </div>
             <span className="font-display text-xl font-semibold text-foreground">
-              NaijaEstates
+              Go Online Estates
             </span>
           </Link>
 
@@ -56,9 +56,9 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+2348012345678" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+            <a href="tel:+2347081150770" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
               <Phone className="w-4 h-4" />
-              +234 801 234 5678
+              +234 708 115 0770
             </a>
             <Button asChild variant="gold">
               <Link to="/contact">Make Enquiry</Link>

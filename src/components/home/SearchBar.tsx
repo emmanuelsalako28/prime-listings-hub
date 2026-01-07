@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, MapPin, DollarSign } from 'lucide-react';
+import { Search, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 const categories = ['All', 'Houses', 'Lands', 'Cars'];
-const locations = ['All Locations', 'Lagos', 'Abuja', 'Port Harcourt', 'Ibadan', 'Kano'];
+const locations = ['All Locations', 'Lagos State', 'Abuja FCT', 'Rivers State', 'Oyo State', 'Kano State', 'Enugu State', 'Delta State'];
 const priceRanges = [
   'Any Price',
   '₦0 - ₦50M',
@@ -82,7 +82,7 @@ export function SearchBar() {
             Price Range
           </label>
           <div className="relative">
-            <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">₦</span>
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}

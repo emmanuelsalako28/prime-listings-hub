@@ -20,7 +20,7 @@ const About = () => {
               Nigeria's Trusted Property Partner
             </h1>
             <p className="text-primary-foreground/70">
-              For over a decade, NaijaEstates has been at the forefront of Nigeria's real estate market, 
+              For over a decade, Go Online Estates has been at the forefront of Nigeria's real estate market, 
               connecting buyers with premium properties and vehicles.
             </p>
           </motion.div>
@@ -38,7 +38,7 @@ const About = () => {
             >
               <img
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800"
-                alt="NaijaEstates Office"
+                alt="Go Online Estates Office"
                 className="rounded-2xl shadow-lg"
               />
             </motion.div>
@@ -54,7 +54,7 @@ const About = () => {
                 Building Dreams Since 2010
               </h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                NaijaEstates was founded with a simple mission: to make property ownership accessible 
+                Go Online Estates was founded with a simple mission: to make property ownership accessible 
                 and transparent for all Nigerians. What started as a small team of passionate real estate 
                 professionals has grown into Nigeria's premier property marketplace.
               </p>
@@ -64,7 +64,7 @@ const About = () => {
                 remains at the heart of everything we do.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                We've expanded our offerings to include premium automobiles, making us your one-stop 
+                We have expanded our offerings to include premium automobiles, making us your one-stop 
                 destination for both property and vehicle acquisitions.
               </p>
             </motion.div>

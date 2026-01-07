@@ -10,10 +10,10 @@ export function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-2 mb-6">
               <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
-                <span className="font-display text-xl font-bold text-primary">N</span>
+                <span className="font-display text-xl font-bold text-primary">G</span>
               </div>
               <span className="font-display text-xl font-semibold">
-                NaijaEstates
+                Go Online Estates
               </span>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
@@ -46,19 +46,19 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" />
                 <span className="text-sm text-primary-foreground/70">
-                  15 Admiralty Way, Lekki Phase 1, Lagos, Nigeria
+                  15 Admiralty Way, Lekki Phase 1, Lagos State, Nigeria
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold shrink-0" />
-                <a href="tel:+2348012345678" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
-                  +234 801 234 5678
+                <a href="tel:+2347081150770" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
+                  +234 708 115 0770
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold shrink-0" />
-                <a href="mailto:info@naijaestates.com" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
-                  info@naijaestates.com
+                <a href="mailto:info@goonlineestates.com" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
+                  info@goonlineestates.com
                 </a>
               </li>
             </ul>
@@ -87,7 +87,7 @@ export function Footer() {
 
         <div className="border-t border-primary-foreground/10 mt-12 pt-8 text-center">
           <p className="text-sm text-primary-foreground/50">
-            © {new Date().getFullYear()} NaijaEstates. All rights reserved.
+            © {new Date().getFullYear()} Go Online Estates. All rights reserved.
           </p>
         </div>
       </div>
