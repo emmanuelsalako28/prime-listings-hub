@@ -50,7 +50,7 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-primary-foreground/70">
-              Have a question or want to make an enquiry? We'd love to hear from you.
+              Have a question or want to make an enquiry? We would love to hear from you.
             </p>
           </motion.div>
         </div>
@@ -70,7 +70,7 @@ const Contact = () => {
                 Let's Start a Conversation
               </h2>
               <p className="text-muted-foreground mb-8">
-                Whether you're looking to buy, sell, or invest in property, our team of experts is 
+                Whether you are looking to buy, sell, or invest in property, our team of experts is 
                 here to guide you every step of the way.
               </p>
 
@@ -83,7 +83,7 @@ const Contact = () => {
                     <h3 className="font-semibold text-foreground mb-1">Visit Us</h3>
                     <p className="text-muted-foreground text-sm">
                       15 Admiralty Way, Lekki Phase 1<br />
-                      Lagos, Nigeria
+                      Lagos State, Nigeria
                     </p>
                   </div>
                 </div>
@@ -94,8 +94,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Call Us</h3>
-                    <a href="tel:+2348012345678" className="text-muted-foreground text-sm hover:text-gold transition-colors">
-                      +234 801 234 5678
+                    <a href="tel:+2347081150770" className="text-muted-foreground text-sm hover:text-gold transition-colors">
+                      +234 708 115 0770
                     </a>
                   </div>
                 </div>
@@ -106,8 +106,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email Us</h3>
-                    <a href="mailto:info@naijaestates.com" className="text-muted-foreground text-sm hover:text-gold transition-colors">
-                      info@naijaestates.com
+                    <a href="mailto:info@goonlineestates.com" className="text-muted-foreground text-sm hover:text-gold transition-colors">
+                      info@goonlineestates.com
                     </a>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ const Contact = () => {
 
               <div className="mt-8">
                 <Button asChild variant="gold" size="lg">
-                  <a href="https://wa.me/2348012345678" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/2347081150770" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5" />
                     Chat on WhatsApp
                   </a>
