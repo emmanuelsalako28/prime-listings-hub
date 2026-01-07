@@ -75,19 +75,7 @@ const Contact = () => {
               </p>
 
               <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gold flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground mb-1">Visit Us</h3>
-                    <p className="text-muted-foreground text-sm">
-                      15 Admiralty Way, Lekki Phase 1<br />
-                      Lagos State, Nigeria
-                    </p>
-                  </div>
-                </div>
-
+                
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-gold flex items-center justify-center shrink-0">
                     <Phone className="w-6 h-6 text-primary" />
@@ -106,8 +94,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email Us</h3>
-                    <a href="mailto:info@goonlineestates.com" className="text-muted-foreground text-sm hover:text-gold transition-colors">
-                      info@goonlineestates.com
+                    <a href="mailto:goonlinemedia0@gmail.com" className="text-muted-foreground text-sm hover:text-gold transition-colors">
+                      goonlinemedia0@gmail.com
+
                     </a>
                   </div>
                 </div>
