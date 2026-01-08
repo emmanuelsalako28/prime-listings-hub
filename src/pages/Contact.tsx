@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { motion } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Clock, Send, MessageCircle, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -75,15 +75,14 @@ const Contact = () => {
               </p>
 
               <div className="space-y-6">
-                
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-gold flex items-center justify-center shrink-0">
                     <Phone className="w-6 h-6 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Call Us</h3>
-                    <a href="tel:+2347081150770" className="text-muted-foreground text-sm hover:text-gold transition-colors">
-                      +234 708 115 0770
+                    <a href="tel:+2348035826698" className="text-muted-foreground text-sm hover:text-gold transition-colors">
+                      +234 803 582 6698
                     </a>
                   </div>
                 </div>
@@ -96,7 +95,6 @@ const Contact = () => {
                     <h3 className="font-semibold text-foreground mb-1">Email Us</h3>
                     <a href="mailto:goonlinemedia0@gmail.com" className="text-muted-foreground text-sm hover:text-gold transition-colors">
                       goonlinemedia0@gmail.com
-
                     </a>
                   </div>
                 </div>
@@ -117,7 +115,7 @@ const Contact = () => {
 
               <div className="mt-8">
                 <Button asChild variant="gold" size="lg">
-                  <a href="https://wa.me/2347081150770" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/2348035826698" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-5 h-5" />
                     Chat on WhatsApp
                   </a>
@@ -195,9 +193,10 @@ const Contact = () => {
                       className="w-full px-4 py-2 bg-secondary border border-border rounded-lg text-foreground focus:outline-none focus:ring-2 focus:ring-gold"
                     >
                       <option value="">Select an option</option>
-                      <option value="houses">Houses</option>
-                      <option value="lands">Lands</option>
-                      <option value="cars">Cars</option>
+                      <option value="buy-house">Buy a House</option>
+                      <option value="buy-land">Buy Land</option>
+                      <option value="buy-car">Buy a Car</option>
+                      <option value="sell-property">Sell My Property</option>
                       <option value="general">General Enquiry</option>
                     </select>
                   </div>
@@ -238,6 +237,43 @@ const Contact = () => {
               </form>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Sell Your Property Section */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-gold mx-auto mb-6 flex items-center justify-center">
+              <Home className="w-8 h-8 text-primary" />
+            </div>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+              Want to Sell Your Property?
+            </h2>
+            <p className="text-muted-foreground mb-8 text-lg">
+              List your house, land, or car with Go Online Estates and reach thousands of potential buyers. 
+              We offer competitive rates and professional marketing to help you sell faster.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild variant="gold" size="xl">
+                <a href="https://wa.me/2348035826698?text=Hello,%20I%20want%20to%20sell%20my%20property" target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-5 h-5" />
+                  WhatsApp Us to Sell
+                </a>
+              </Button>
+              <Button asChild variant="gold-outline" size="xl">
+                <a href="tel:+2348035826698">
+                  <Phone className="w-5 h-5" />
+                  Call: +234 803 582 6698
+                </a>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
     </Layout>

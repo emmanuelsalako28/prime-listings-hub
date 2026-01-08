@@ -22,12 +22,12 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
-              <span className="font-display text-xl font-bold text-primary-foreground">G</span>
-            </div>
-            <span className="font-display text-xl font-semibold text-foreground">
-              Go Online Estates
+          <Link to="/" className="flex items-center gap-1">
+            <span className="font-display text-xl font-bold text-foreground tracking-tight">
+              GO-ONLINE
+            </span>
+            <span className="font-display text-xl font-bold text-gold tracking-tight">
+              ESTATES
             </span>
           </Link>
 
@@ -56,9 +56,9 @@ export function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+2347081150770" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+            <a href="tel:+2348035826698" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
               <Phone className="w-4 h-4" />
-              +234 708 115 0770
+              +234 803 582 6698
             </a>
             <Button asChild variant="gold">
               <Link to="/contact">Make Enquiry</Link>

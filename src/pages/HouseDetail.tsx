@@ -151,7 +151,7 @@ const HouseDetail = () => {
                   </Link>
                 </Button>
                 <Button asChild variant="gold-outline" size="lg" className="flex-1">
-                  <a href="https://wa.me/2347081150770" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/2348035826698" target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="w-4 h-4" />
                     WhatsApp
                   </a>
