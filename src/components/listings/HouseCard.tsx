@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Bed, Bath, Maximize } from 'lucide-react';
+import { MapPin, Bed, Bath, Maximize, ShoppingCart, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { House } from '@/data/listings';
+import { useCart } from '@/context/CartContext';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 interface HouseCardProps {
   house: House;
 }
 
 export function HouseCard({ house }: HouseCardProps) {
+  const { addToCart, isInCart } = useCart();
+  const inCart = isInCart(house.id);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!inCart) {
+      addToCart(house);
+      toast.success('Added to enquiry list!');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -43,7 +58,7 @@ export function HouseCard({ house }: HouseCardProps) {
             <span>{house.location}</span>
           </div>
           
-          <div className="flex items-center gap-4 pt-4 border-t border-border">
+          <div className="flex items-center gap-4 pb-4 border-b border-border">
             <div className="flex items-center gap-1.5 text-muted-foreground text-sm">
               <Bed className="w-4 h-4" />
               <span>{house.bedrooms} Beds</span>
@@ -56,6 +71,28 @@ export function HouseCard({ house }: HouseCardProps) {
               <Maximize className="w-4 h-4" />
               <span>{house.size}</span>
             </div>
+          </div>
+
+          <div className="pt-4">
+            <Button
+              onClick={handleAddToCart}
+              variant={inCart ? "secondary" : "gold"}
+              size="sm"
+              className="w-full"
+              disabled={inCart}
+            >
+              {inCart ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  Added to List
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="w-4 h-4" />
+                  Add to Enquiry
+                </>
+              )}
+            </Button>
           </div>
         </div>
       </Link>

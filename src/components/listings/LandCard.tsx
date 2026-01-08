@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Maximize, FileText } from 'lucide-react';
+import { MapPin, Maximize, FileText, ShoppingCart, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Land } from '@/data/listings';
+import { useCart } from '@/context/CartContext';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 interface LandCardProps {
   land: Land;
 }
 
 export function LandCard({ land }: LandCardProps) {
+  const { addToCart, isInCart } = useCart();
+  const inCart = isInCart(land.id);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!inCart) {
+      addToCart(land);
+      toast.success('Added to enquiry list!');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -43,7 +58,7 @@ export function LandCard({ land }: LandCardProps) {
             <span>{land.location}</span>
           </div>
           
-          <div className="flex items-center gap-4 pt-4 border-t border-border">
+          <div className="flex items-center gap-4 pb-4 border-b border-border">
             <div className="flex items-center gap-1.5 text-muted-foreground text-sm">
               <Maximize className="w-4 h-4" />
               <span>{land.size}</span>
@@ -52,6 +67,28 @@ export function LandCard({ land }: LandCardProps) {
               <FileText className="w-4 h-4" />
               <span>{land.documentation}</span>
             </div>
+          </div>
+
+          <div className="pt-4">
+            <Button
+              onClick={handleAddToCart}
+              variant={inCart ? "secondary" : "gold"}
+              size="sm"
+              className="w-full"
+              disabled={inCart}
+            >
+              {inCart ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  Added to List
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="w-4 h-4" />
+                  Add to Enquiry
+                </>
+              )}
+            </Button>
           </div>
         </div>
       </Link>

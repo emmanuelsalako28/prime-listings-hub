@@ -1,13 +1,28 @@
 import { Link } from 'react-router-dom';
-import { Calendar, Gauge, Settings } from 'lucide-react';
+import { Calendar, Gauge, Settings, ShoppingCart, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Car } from '@/data/listings';
+import { useCart } from '@/context/CartContext';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 
 interface CarCardProps {
   car: Car;
 }
 
 export function CarCard({ car }: CarCardProps) {
+  const { addToCart, isInCart } = useCart();
+  const inCart = isInCart(car.id);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!inCart) {
+      addToCart(car);
+      toast.success('Added to enquiry list!');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -42,7 +57,7 @@ export function CarCard({ car }: CarCardProps) {
             {car.brand} • {car.model}
           </p>
           
-          <div className="flex items-center gap-4 pt-4 border-t border-border">
+          <div className="flex items-center gap-4 pb-4 border-b border-border">
             <div className="flex items-center gap-1.5 text-muted-foreground text-sm">
               <Calendar className="w-4 h-4" />
               <span>{car.year}</span>
@@ -55,6 +70,28 @@ export function CarCard({ car }: CarCardProps) {
               <Settings className="w-4 h-4" />
               <span>{car.condition}</span>
             </div>
+          </div>
+
+          <div className="pt-4">
+            <Button
+              onClick={handleAddToCart}
+              variant={inCart ? "secondary" : "gold"}
+              size="sm"
+              className="w-full"
+              disabled={inCart}
+            >
+              {inCart ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  Added to List
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="w-4 h-4" />
+                  Add to Enquiry
+                </>
+              )}
+            </Button>
           </div>
         </div>
       </Link>

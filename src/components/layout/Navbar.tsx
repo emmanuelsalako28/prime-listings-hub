@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CartDrawer } from '@/components/cart/CartDrawer';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -60,18 +61,22 @@ export function Navbar() {
               <Phone className="w-4 h-4" />
               +234 803 582 6698
             </a>
+            <CartDrawer />
             <Button asChild variant="gold">
               <Link to="/contact">Make Enquiry</Link>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-foreground"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <CartDrawer />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 text-foreground"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
