@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Phone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
 
 export function Footer() {
   return (
@@ -8,12 +8,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-gradient-gold flex items-center justify-center">
-                <span className="font-display text-xl font-bold text-primary">G</span>
-              </div>
-              <span className="font-display text-xl font-semibold">
-                Go Online Estates
+            <Link to="/" className="flex items-center gap-1 mb-6">
+              <span className="font-display text-xl font-bold tracking-tight">
+                GO-ONLINE
+              </span>
+              <span className="font-display text-xl font-bold text-gold tracking-tight">
+                ESTATES
               </span>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
@@ -43,22 +43,15 @@ export function Footer() {
           <div>
             <h4 className="font-display text-lg font-semibold mb-6">Contact Us</h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                <span className="text-sm text-primary-foreground/70">
-                  15 Admiralty Way, Lekki Phase 1, Lagos State, Nigeria
-                </span>
-              </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gold shrink-0" />
-                <a href="tel:+2347081150770" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
-                  +234 708 115 0770
+                <a href="tel:+2348035826698" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
+                  +234 803 582 6698
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-gold shrink-0" />
-                <a href="mailto:goonlinemedia0@gmail.com
-" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
+                <a href="mailto:goonlinemedia0@gmail.com" className="text-sm text-primary-foreground/70 hover:text-gold transition-colors">
                   goonlinemedia0@gmail.com
                 </a>
               </li>
