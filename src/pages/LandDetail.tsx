@@ -2,13 +2,23 @@ import { useParams, Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { lands } from '@/data/listings';
 import { motion } from 'framer-motion';
-import { MapPin, Maximize, FileText, ArrowLeft, Phone, MessageCircle } from 'lucide-react';
+import { MapPin, Maximize, FileText, ArrowLeft, Phone, MessageCircle, ShoppingCart, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
+import { toast } from 'sonner';
 
 const LandDetail = () => {
   const { id } = useParams();
   const land = lands.find((l) => l.id === id);
+  const { addToCart, isInCart } = useCart();
+  const inCart = land ? isInCart(land.id) : false;
 
+  const handleAddToCart = () => {
+    if (land && !inCart) {
+      addToCart(land);
+      toast.success('Added to enquiry list!');
+    }
+  };
   if (!land) {
     return (
       <Layout>
@@ -107,19 +117,40 @@ const LandDetail = () => {
               </div>
 
               {/* Contact Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild variant="gold" size="lg" className="flex-1">
-                  <Link to="/contact">
-                    <Phone className="w-4 h-4" />
-                    Contact Agent
-                  </Link>
+              <div className="flex flex-col gap-4">
+                <Button
+                  onClick={handleAddToCart}
+                  variant={inCart ? "secondary" : "gold"}
+                  size="lg"
+                  className="w-full"
+                  disabled={inCart}
+                >
+                  {inCart ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      Added to Enquiry List
+                    </>
+                  ) : (
+                    <>
+                      <ShoppingCart className="w-4 h-4" />
+                      Add to Enquiry List
+                    </>
+                  )}
                 </Button>
-                <Button asChild variant="gold-outline" size="lg" className="flex-1">
-                  <a href="https://wa.me/2348035826698" target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
-                  </a>
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild variant="gold-outline" size="lg" className="flex-1">
+                    <Link to="/contact">
+                      <Phone className="w-4 h-4" />
+                      Contact Agent
+                    </Link>
+                  </Button>
+                  <Button asChild variant="gold-outline" size="lg" className="flex-1">
+                    <a href="https://wa.me/2348035826698" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="w-4 h-4" />
+                      WhatsApp
+                    </a>
+                  </Button>
+                </div>
               </div>
             </motion.div>
           </div>
