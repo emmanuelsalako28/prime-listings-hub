@@ -1,9 +1,12 @@
 import { Layout } from '@/components/layout/Layout';
 import { CarCard } from '@/components/listings/CarCard';
-import { cars } from '@/data/listings';
+import { useCars } from '@/hooks/useListings';
 import { motion } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
 
 const Cars = () => {
+  const { cars, loading, error } = useCars();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -42,11 +45,26 @@ const Cars = () => {
             </select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {cars.map((car) => (
-              <CarCard key={car.id} car={car} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-gold" />
+              <span className="ml-2 text-muted-foreground">Loading vehicles...</span>
+            </div>
+          ) : error ? (
+            <div className="text-center py-20">
+              <p className="text-destructive">{error}</p>
+            </div>
+          ) : cars.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground">No vehicles available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {cars.map((car) => (
+                <CarCard key={car.id} car={car} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </Layout>

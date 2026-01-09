@@ -1,9 +1,12 @@
 import { Layout } from '@/components/layout/Layout';
 import { LandCard } from '@/components/listings/LandCard';
-import { lands } from '@/data/listings';
+import { useLands } from '@/hooks/useListings';
 import { motion } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
 
 const Lands = () => {
+  const { lands, loading, error } = useLands();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -42,11 +45,26 @@ const Lands = () => {
             </select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {lands.map((land) => (
-              <LandCard key={land.id} land={land} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-gold" />
+              <span className="ml-2 text-muted-foreground">Loading land plots...</span>
+            </div>
+          ) : error ? (
+            <div className="text-center py-20">
+              <p className="text-destructive">{error}</p>
+            </div>
+          ) : lands.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground">No land plots available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {lands.map((land) => (
+                <LandCard key={land.id} land={land} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </Layout>

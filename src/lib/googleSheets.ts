@@ -1,59 +1,52 @@
 // Google Sheets API Service
 // This fetches data from your published Google Apps Script web app
 
+import { House, Land, Car } from '@/data/listings';
+
 const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbwRq-7wIKRyZBzTWDvqzz88ujBuUyRuDIzuL_DBtxsRHtFbtdb-y4Ou9IfXOQrCwcQ-BQ/exec";
 
-export interface SheetListing {
-  id: string;
-  type: 'house' | 'land' | 'car';
-  title: string;
-  price: string;
-  priceValue: number;
-  location: string;
-  images: string[];
-  description: string;
-  // House specific
-  bedrooms?: number;
-  bathrooms?: number;
-  size?: string;
-  features?: string[];
-  // Land specific
-  status?: string;
-  documentation?: string;
-  // Car specific
-  brand?: string;
-  model?: string;
-  year?: number;
-  mileage?: string;
-  condition?: 'New' | 'Used' | 'Foreign Used';
-  specifications?: string[];
+interface SheetsResponse {
+  houses: House[];
+  lands: Land[];
+  cars: Car[];
 }
 
-export async function fetchListingsFromSheets(): Promise<SheetListing[]> {
+export async function fetchAllListings(): Promise<SheetsResponse> {
   try {
-    const response = await fetch(SHEETS_API_URL);
+    const response = await fetch(SHEETS_API_URL, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
     if (!response.ok) {
       throw new Error('Failed to fetch listings from Google Sheets');
     }
+    
     const data = await response.json();
-    return data.listings || [];
+    return {
+      houses: data.houses || [],
+      lands: data.lands || [],
+      cars: data.cars || [],
+    };
   } catch (error) {
     console.error('Error fetching from Google Sheets:', error);
-    return [];
+    return { houses: [], lands: [], cars: [] };
   }
 }
 
-export async function fetchHousesFromSheets() {
-  const listings = await fetchListingsFromSheets();
-  return listings.filter(l => l.type === 'house');
+export async function fetchHouses(): Promise<House[]> {
+  const data = await fetchAllListings();
+  return data.houses.map(h => ({ ...h, type: 'house' as const }));
 }
 
-export async function fetchLandsFromSheets() {
-  const listings = await fetchListingsFromSheets();
-  return listings.filter(l => l.type === 'land');
+export async function fetchLands(): Promise<Land[]> {
+  const data = await fetchAllListings();
+  return data.lands.map(l => ({ ...l, type: 'land' as const }));
 }
 
-export async function fetchCarsFromSheets() {
-  const listings = await fetchListingsFromSheets();
-  return listings.filter(l => l.type === 'car');
+export async function fetchCars(): Promise<Car[]> {
+  const data = await fetchAllListings();
+  return data.cars.map(c => ({ ...c, type: 'car' as const }));
 }
