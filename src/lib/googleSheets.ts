@@ -1,7 +1,7 @@
 // Google Sheets API Service
 // This fetches data from your published Google Apps Script web app
 
-const SHEETS_API_URL = "YOUR_GOOGLE_SCRIPT_WEB_APP_URL"; // Replace after deploying
+const SHEETS_API_URL = "https://script.google.com/macros/s/AKfycbwRq-7wIKRyZBzTWDvqzz88ujBuUyRuDIzuL_DBtxsRHtFbtdb-y4Ou9IfXOQrCwcQ-BQ/exec";
 
 export interface SheetListing {
   id: string;
