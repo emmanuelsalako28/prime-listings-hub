@@ -1,9 +1,12 @@
 import { Layout } from '@/components/layout/Layout';
 import { HouseCard } from '@/components/listings/HouseCard';
-import { houses } from '@/data/listings';
+import { useHouses } from '@/hooks/useListings';
 import { motion } from 'framer-motion';
+import { Loader2 } from 'lucide-react';
 
 const Houses = () => {
+  const { houses, loading, error } = useHouses();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -41,11 +44,26 @@ const Houses = () => {
             </select>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {houses.map((house) => (
-              <HouseCard key={house.id} house={house} />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-gold" />
+              <span className="ml-2 text-muted-foreground">Loading properties...</span>
+            </div>
+          ) : error ? (
+            <div className="text-center py-20">
+              <p className="text-destructive">{error}</p>
+            </div>
+          ) : houses.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-muted-foreground">No properties available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {houses.map((house) => (
+                <HouseCard key={house.id} house={house} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </Layout>
