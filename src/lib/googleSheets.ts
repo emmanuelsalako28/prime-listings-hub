@@ -13,18 +13,19 @@ interface SheetsResponse {
 
 export async function fetchAllListings(): Promise<SheetsResponse> {
   try {
+    // Use redirect: 'follow' to handle Google's redirects properly
     const response = await fetch(SHEETS_API_URL, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      redirect: 'follow',
     });
     
     if (!response.ok) {
-      throw new Error('Failed to fetch listings from Google Sheets');
+      throw new Error(`Failed to fetch listings: ${response.status}`);
     }
     
     const data = await response.json();
+    console.log('Fetched data from Google Sheets:', data);
+    
     return {
       houses: data.houses || [],
       lands: data.lands || [],
@@ -32,6 +33,7 @@ export async function fetchAllListings(): Promise<SheetsResponse> {
     };
   } catch (error) {
     console.error('Error fetching from Google Sheets:', error);
+    // Return empty arrays on error
     return { houses: [], lands: [], cars: [] };
   }
 }
