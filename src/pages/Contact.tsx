@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
+import { submitContactForm } from '@/lib/googleSheets';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,11 +22,14 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const success = await submitContactForm(formData);
 
-    toast.success('Thank you for your enquiry! We will get back to you soon.');
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    if (success) {
+      toast.success('Thank you for your enquiry! We will get back to you soon.');
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } else {
+      toast.error('Something went wrong. Please try again or contact us via WhatsApp.');
+    }
     setIsSubmitting(false);
   };
 

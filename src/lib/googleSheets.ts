@@ -58,3 +58,34 @@ export async function fetchCars(): Promise<Car[]> {
   const data = await fetchAllListings();
   return data.cars.map(c => ({ ...c, type: 'car' as const }));
 }
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+export async function submitContactForm(formData: ContactFormData): Promise<boolean> {
+  try {
+    const response = await fetch(SHEETS_API_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        action: 'contact',
+        ...formData,
+        timestamp: new Date().toISOString(),
+      }),
+    });
+    
+    // With no-cors, we can't read the response, but if no error was thrown, assume success
+    return true;
+  } catch (error) {
+    console.error('Error submitting contact form:', error);
+    return false;
+  }
+}
