@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import type { House } from '@/data/listings';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
+import { MediaDisplay } from '@/components/ui/media-display';
 import { toast } from 'sonner';
 
 interface HouseCardProps {
@@ -35,7 +36,7 @@ export function HouseCard({ house }: HouseCardProps) {
         className="group block bg-card rounded-xl overflow-hidden shadow-md hover-lift"
       >
         <div className="relative aspect-[4/3] overflow-hidden">
-          <img
+          <MediaDisplay
             src={house.images[0]}
             alt={house.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
