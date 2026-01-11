@@ -4,6 +4,7 @@ import { Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CartDrawer } from '@/components/cart/CartDrawer';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -61,6 +62,7 @@ export function Navbar() {
               <Phone className="w-4 h-4" />
               +234 803 582 6698
             </a>
+            <ThemeToggle />
             <CartDrawer />
             <Button asChild variant="gold">
               <Link to="/contact">Make Enquiry</Link>
@@ -69,6 +71,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
             <CartDrawer />
             <button
               onClick={() => setIsOpen(!isOpen)}
