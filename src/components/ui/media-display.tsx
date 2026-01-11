@@ -59,8 +59,9 @@ export function MediaDisplay({ src, alt, className = '', showPlayButton = true }
   
   if (!src || imageError) {
     return (
-      <div className={`bg-muted flex items-center justify-center ${className}`}>
-        <span className="text-muted-foreground text-sm">No image</span>
+      <div className={`bg-muted flex flex-col items-center justify-center gap-2 p-4 text-center ${className}`}>
+        <span className="text-muted-foreground text-sm font-medium">📹 Video Available</span>
+        <span className="text-muted-foreground text-xs">Contact us to view this property</span>
       </div>
     );
   }
